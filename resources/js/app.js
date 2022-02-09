@@ -5,6 +5,8 @@
  */
 
 require('./bootstrap');
+window.$ = window.jQuery = require('jquery');
+require('jquery.easing');
 
 // window.Vue = require('vue').default;
 
@@ -31,7 +33,8 @@ require('./bootstrap');
 import Vue from 'vue'
 import VueMeta from 'vue-meta'
 import VueToast from 'vue-toast-notification';
-import App from './App.vue'
+import VueProgressBar from 'vue-progressbar'
+import App from './NewApp.vue'
 import router from './router'
 import store from './store'
 import moment from 'moment';
@@ -46,10 +49,11 @@ import 'bootstrap'
 
 Vue.config.productionTip = false
 
-// Comment this if production mode
-Vue.config.devtools = false
-Vue.config.debug = false
-Vue.config.silent = true
+if (process.env.MIX_APP_ENV === 'production') {
+    Vue.config.devtools = false;
+    Vue.config.debug = false;
+    Vue.config.silent = true; 
+}
 
 Vue.prototype.$base_url = 'http://dailyreport.test'
 Vue.prototype.moment = moment
@@ -60,6 +64,21 @@ if(token) {
   setHeaderToken(token)
 }
 
+const options = {
+  color: '#bffaf3',
+  failedColor: '#874b4b',
+  thickness: '5px',
+  transition: {
+    speed: '0.2s',
+    opacity: '0.6s',
+    termination: 300
+  },
+  autoRevert: true,
+  location: 'left',
+  inverse: false
+}
+
+Vue.use(VueProgressBar, options)
 Vue.use(VueMeta)
 Vue.use(VueToast, {
   position: 'top-right'

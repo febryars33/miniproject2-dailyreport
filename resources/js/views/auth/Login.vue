@@ -122,8 +122,6 @@ export default {
           })
           .catch((error) => {
             this.anim_loading = false;
-            // this.errors = error.response.data
-            // console.log(error.response.data.status.message)
             this.$toast.open({
               message: error.response.data.status.message,
               type: 'error'

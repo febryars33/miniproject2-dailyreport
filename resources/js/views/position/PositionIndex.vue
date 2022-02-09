@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <div class="card border-0 shadow-sm">
+  <div class="container-fluid px-4 my-4">
+    <div class="card bg-light border-0 shadow-sm">
       <div class="card-body p-4">
         <h5>List Positions</h5>
         <div class="row mb-3">
@@ -24,7 +24,7 @@
         </div>
         <div class="table-responsive-xxl">
           <table class="table table-sm table-hover">
-            <thead class="table-light">
+            <thead class="table-dark">
               <tr>
                 <th>#</th>
                 <th>Code</th>

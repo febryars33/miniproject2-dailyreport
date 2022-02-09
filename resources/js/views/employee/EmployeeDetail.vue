@@ -3,7 +3,7 @@
     <div class="card bg-light border-0 shadow-sm">
       <div class="card-body">
         <p class="mb-4">
-          <span class="h5">Create a new Employee</span>
+          <span class="h5">Detail Employee</span>
           <router-link
             to="/employees"
             class="float-end"
@@ -16,9 +16,9 @@
 
 <script>
 export default {
-  name: 'EmployeeCreate',
+  name: 'EmployeeDetail',
   metaInfo: {
-    title: 'Create a new Employee'
+    title: 'EmployeeDetail'
   }
 }
 </script>

@@ -20,6 +20,7 @@ class CreateEmployeesTable extends Migration
             $table->string('location');
             $table->text('bio')->nullable();
             $table->boolean('status');
+            $table->string('photo');
             $table->boolean('is_lecturer');
             $table->timestamps();
         });

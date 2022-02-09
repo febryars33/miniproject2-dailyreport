@@ -22,4 +22,10 @@ mix.js('resources/js/app.js', 'public/js')
             camelCase: true
             }
         }
+    })
+    .override(config => {
+        if (config.devServer) {
+            config.devServer.devMiddleware = config.devServer.dev;
+            delete config.devServer.dev;
+        }
     });

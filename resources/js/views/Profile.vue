@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="container-fluid px-4 my-4">
     <p class="mb-2">
       <span class="h3">Febriansyah Riki Setiadi</span>
       <router-link
@@ -24,7 +24,7 @@
         </div>
       </div>
     </template>
-    <div class="card border-0 shadow-sm">
+    <div class="card bg-light border-0 shadow-sm">
       <div class="card-body">
         <h5 class="mb-4">User Information</h5>
         <div class="row mb-3">

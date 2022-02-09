@@ -1,78 +1,80 @@
 <template>
-  <div class="card border-0 shadow-sm">
-    <div class="card-body p-4">
-      <h5>Create a new Position</h5>
-      <div class="row mb-3">
-        <div class="col-lg align-self-center">
-          <router-link to="/positions"><i class="fa fa-chevron-left"></i> Back</router-link>
-        </div>
-      </div>
-      <!-- form -->
-      <form
-        method="post"
-        ref="position_form"
-        @submit.prevent="submit"
-      >
-        <!-- Code -->
-        <div class="mb-3 row">
-          <label
-            for="code"
-            class="col-sm-2 col-form-label"
-          >Code <sup class="text-danger">*</sup></label>
-          <div class="col-sm-10">
-            <input
-              type="text"
-              name="code"
-              class="form-control"
-              id="code"
-              v-model="position_form.code"
-            >
+  <div class="container-fluid px-4 my-4">
+    <div class="card bg-light border-0 shadow-sm">
+      <div class="card-body p-4">
+        <h5>Create a new Position</h5>
+        <div class="row mb-3">
+          <div class="col-lg align-self-center">
+            <router-link to="/positions"><i class="fa fa-chevron-left"></i> Back</router-link>
           </div>
         </div>
-        <!-- Name -->
-        <div class="mb-3 row">
-          <label
-            for="name"
-            class="col-sm-2 col-form-label"
-          >Name <sup class="text-danger">*</sup></label>
-          <div class="col-sm-10">
-            <input
-              type="text"
-              name="name"
-              class="form-control"
-              id="name"
-              v-model="position_form.name"
-            >
-          </div>
-        </div>
-        <!-- Description -->
-        <div class="mb-3 row">
-          <label
-            for="description"
-            class="col-sm-2 col-form-label"
-          >Description</label>
-          <div class="col-sm-10">
-            <textarea
-              name="description"
-              class="form-control"
-              id="description"
-              rows="6"
-              v-model="position_form.description"
-            ></textarea>
-          </div>
-        </div>
-        <!-- Submit -->
-        <div class="mb-3 row">
-          <div class="offset-sm-2 col-sm-10">
-            <div class="d-grid">
-              <button
-                type="submit"
-                class="btn btn-outline-primary"
-              ><i class="fa fa-paper-plane"></i> Create</button>
+        <!-- form -->
+        <form
+          method="post"
+          ref="position_form"
+          @submit.prevent="submit"
+        >
+          <!-- Code -->
+          <div class="mb-3 row">
+            <label
+              for="code"
+              class="col-sm-2 col-form-label"
+            >Code <sup class="text-danger">*</sup></label>
+            <div class="col-sm-10">
+              <input
+                type="text"
+                name="code"
+                class="form-control"
+                id="code"
+                v-model="position_form.code"
+              >
             </div>
           </div>
-        </div>
-      </form>
+          <!-- Name -->
+          <div class="mb-3 row">
+            <label
+              for="name"
+              class="col-sm-2 col-form-label"
+            >Name <sup class="text-danger">*</sup></label>
+            <div class="col-sm-10">
+              <input
+                type="text"
+                name="name"
+                class="form-control"
+                id="name"
+                v-model="position_form.name"
+              >
+            </div>
+          </div>
+          <!-- Description -->
+          <div class="mb-3 row">
+            <label
+              for="description"
+              class="col-sm-2 col-form-label"
+            >Description</label>
+            <div class="col-sm-10">
+              <textarea
+                name="description"
+                class="form-control"
+                id="description"
+                rows="6"
+                v-model="position_form.description"
+              ></textarea>
+            </div>
+          </div>
+          <!-- Submit -->
+          <div class="mb-3 row">
+            <div class="offset-sm-2 col-sm-10">
+              <div class="d-grid">
+                <button
+                  type="submit"
+                  class="btn btn-outline-primary"
+                ><i class="fa fa-paper-plane"></i> Create</button>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
     </div>
   </div>
 </template>

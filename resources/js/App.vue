@@ -1,26 +1,34 @@
 <template>
   <div>
     <!-- Navbar -->
-    <template v-if="isLoggedIn">
-      <Navbar />
-    </template>
+
     <!-- End of Navbar -->
 
     <!-- Container -->
-    <div class="container-fluid">
-      <!-- Row -->
-      <div class="row mt-4">
+    <!-- <div class="container-fluid"> -->
+    <!-- Row -->
+    <div class="d-flex">
+      <template v-if="isLoggedIn">
+        <div class="col-lg-3">
+          <Sidenav />
+        </div>
+      </template>
+      <div class="col-lg">
         <template v-if="isLoggedIn">
-          <div class="col-lg-3">
-            <Sidenav />
-          </div>
+          <Navbar />
         </template>
-        <div class="col-lg">
-          <router-view></router-view>
+        <div class="col-lg-11 mx-auto py-4">
+          <div
+            class="wrapper"
+            style="margin-bottom: 20rem"
+          >
+            <router-view></router-view>
+          </div>
         </div>
       </div>
-      <!-- End of Row -->
     </div>
+    <!-- End of Row -->
+    <!-- </div> -->
     <!-- End of Container -->
   </div>
 </template>
@@ -42,11 +50,11 @@ export default {
   computed: {
     ...mapGetters({
       isLoggedIn: 'isLoggedIn',
-      user: 'user'
+      userdata: 'user'
     })
   },
   created () {
-    document.body.style.backgroundColor = "#f8f9fa";
+    // document.body.style.backgroundColor = "#f8f9fa";
     /* global bootstrap: false */
     (function () {
       'use strict'

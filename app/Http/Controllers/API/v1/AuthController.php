@@ -20,6 +20,9 @@ use Illuminate\Support\Facades\Hash;
  */
 class AuthController extends Controller
 {
+    /**
+     * 
+     */
     public function __construct()
     {
         //
@@ -41,8 +44,34 @@ class AuthController extends Controller
         $email = $request->input('email');
         $password = $request->input('password');
         $user = User::where('email', $email)->first();
+        $employee = DB::table('employees')
+            ->join('users', 'users.employee_id', '=', 'employees.id')
+            ->first(['employees.status', 'name']);
         if ($user) {
             if (Hash::check($password, $user->password)) {
+
+                // if table users on column status false
+                if ($user['status'] === 0) {
+                    return response()->json([
+                        'status'    =>  [
+                            'code'  =>  403,
+                            'description'   =>  'Forbidden',
+                            'message'   =>  'Your account has been deactivated. Please contact the application manager.'
+                        ]
+                    ], 403);
+                    die;
+                }
+
+                if ($employee->status === 0) {
+                    return response()->json([
+                        'status'    =>  [
+                            'code'  =>  403,
+                            'description'   =>  'Forbidden',
+                            'message'   =>  'Sorry ' . $employee->name . '. Your job data has been disabled.<br>Please contact your supervisor for verification with the application manager.'
+                        ]
+                    ], 403);
+                    die;
+                }
 
                 $token = $user->createToken($request->device_name)->plainTextToken;
 
@@ -53,7 +82,7 @@ class AuthController extends Controller
                         'message'   =>  'Login Berhasil.'
                     ],
                     'results'    =>  [
-                        'token' =>  $token
+                        'token' =>  $token,
                     ]
                 ], 200);
             } else {
@@ -117,6 +146,12 @@ class AuthController extends Controller
         ], 200);
     }
 
+    /**
+     * Userdata edit bio
+     *
+     * @param Request $request
+     * @return void
+     */
     public function userdata_edit_bio(Request $request)
     {
         $bio_new = $request->bio;

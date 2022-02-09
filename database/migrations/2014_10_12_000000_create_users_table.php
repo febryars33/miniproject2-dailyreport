@@ -28,6 +28,7 @@ class CreateUsersTable extends Migration
                 'SPMI',
                 'LEADER'
             ]);
+            $table->boolean('status');
             $table->rememberToken();
             $table->timestamps();
         });

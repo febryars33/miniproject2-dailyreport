@@ -13,7 +13,39 @@ import ChangePassword from '../views/settings/ChangePassword.vue'
 import PositionsIndex from '../views/position/PositionIndex.vue'
 import PositionsCreate from '../views/position/PositionCreate.vue'
 
+// Employees
+import EmployeesIndex from '../views/employee/EmployeeIndex.vue'
+import EmployeesCreate from '../views/employee/EmployeeCreate.vue'
+import EmployeesDetail from '../views/employee/EmployeeDetail.vue'
+
 Vue.use(VueRouter)
+
+const progress_bar_config = [
+          {
+            call: 'color',
+            modifier: 'temp',
+            argument: '#0092ee'
+          },
+          {
+            call: 'fail',
+            modifier: 'temp',
+            argument: '#f83f37'
+          },
+          {
+            call: 'location',
+            modifier: 'temp',
+            argument: 'top'
+          },
+          {
+            call: 'transition',
+            modifier: 'temp',
+            argument: {
+              speed: '1.5s',
+              opacity: '0.6s',
+              termination: 300
+            }
+          }
+        ]
 
 const routes = [
   {
@@ -21,7 +53,10 @@ const routes = [
     name: 'Home',
     component: Home,
     meta: {
-      auth: true
+      auth: true,
+      progress: {
+        func: progress_bar_config
+      }
     }
   },
   {
@@ -29,7 +64,10 @@ const routes = [
     name: 'Login',
     component: Login,
     meta: {
-      guest: true
+      guest: true,
+      progress: {
+        func: progress_bar_config
+      }
     }
   },
   {
@@ -37,7 +75,10 @@ const routes = [
     name: 'Profile',
     component: Profile,
     meta: {
-      auth: true
+      auth: true,
+      progress: {
+        func: progress_bar_config
+      }
     }
   },
   {
@@ -45,7 +86,10 @@ const routes = [
     name: 'Settings',
     component: Settings,
     meta: {
-      auth: true
+      auth: true,
+      progress: {
+        func: progress_bar_config
+      }
     }
   },
   {
@@ -53,7 +97,10 @@ const routes = [
     name: 'ChangePassword',
     component: ChangePassword,
     meta: {
-      auth: true
+      auth: true,
+      progress: {
+        func: progress_bar_config
+      }
     }
   },
   // positions
@@ -62,7 +109,10 @@ const routes = [
     name: 'PositionsIndex',
     component: PositionsIndex,
     meta: {
-      auth: true
+      auth: true,
+      progress: {
+        func: progress_bar_config
+      }
     }
   },
   {
@@ -70,13 +120,54 @@ const routes = [
     name: 'PositionsCreate',
     component: PositionsCreate,
     meta: {
-      auth: true
+      auth: true,
+      progress: {
+        func: progress_bar_config
+      }
+    }
+  },
+  {
+    path: '/employees',
+    name: 'EmployeesIndex',
+    component: EmployeesIndex,
+    meta: {
+      auth: true,
+      progress: {
+        func: progress_bar_config
+      }
+    }
+  },
+  {
+    path: '/employees/create',
+    name: 'EmployeesCreate',
+    component: EmployeesCreate,
+    meta: {
+      auth: true,
+      progress: {
+        func: progress_bar_config
+      }
+    }
+  },
+  {
+    path: '/employees/:id',
+    name: 'EmployeeDetail',
+    component: EmployeesDetail,
+    meta: {
+      auth: true,
+      progress: {
+        func: progress_bar_config
+      }
     }
   },
   {
     path: '*',
     name: '404',
-    component: Error404
+    component: Error404,
+    meta: {
+      progress: {
+        func: progress_bar_config
+      }
+    }
   }
 ]
 

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\API\v1\AuthController;
+use App\Http\Controllers\API\v1\EmployeeController;
 use App\Http\Controllers\API\v1\PositionController;
 use App\Http\Controllers\API\v1\SettingsController;
 use Illuminate\Http\Request;
@@ -46,12 +47,20 @@ Route::group(['prefix' => 'v1'], function () {
             Route::post('/change-bio', [AuthController::class, 'userdata_edit_bio'])->name('userdata_edit_bio');
         });
 
+        // Positions
         Route::group(['prefix' => 'position'], function () {
             Route::get('/', [PositionController::class, 'index'])->name('position_index');
             Route::post('/', [PositionController::class, 'store'])->name('position_store');
             Route::delete('/', [PositionController::class, 'destroy'])->name('position_destroy');
         });
+
+        // Employees
+        Route::group(['prefix' => 'employee'], function () {
+            Route::get('/', [EmployeeController::class, 'index'])->name('employee_index');
+            Route::post('/', [EmployeeController::class, 'store'])->name('employee_store');
+            // Route::post('/', EmployeeController::class, 'deactive')->name('deactive');
+        });
     });
 });
 
-Route::post('/password', [SettingsController::class, 'makeTestPassword'])->name('make_test_password');
+// Route::post('/password', [SettingsController::class, 'makeTestPassword'])->name('make_test_password');

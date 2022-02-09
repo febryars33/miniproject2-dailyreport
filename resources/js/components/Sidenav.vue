@@ -1,152 +1,118 @@
 <template>
-  <div class="card border-0 shadow-sm mb-4">
-    <div class="card-body">
-      <div class="text-center">
-        <router-link to="/">
+  <!-- Sidebar Start -->
+  <div class="sidebar pe-4 pb-3">
+    <nav class="navbar bg-light navbar-light">
+      <router-link
+        to="/"
+        class="navbar-brand mx-4 mb-3"
+      >
+        <!-- <h3 class="text-primary"><i class="fa fa-hashtag me-2"></i>DailyReport</h3> -->
+        <img
+          class="img-fluid"
+          :src="this.$base_url + '/assets/img/logo_stmik_kampusmerdeka.png'"
+          alt=""
+        >
+      </router-link>
+      <div class="d-flex align-items-center ms-4 mb-4">
+        <div class="position-relative">
           <img
+            class="rounded-circle"
             :src="this.$base_url + '/assets/img/user.jpg'"
             alt=""
-            class="img-thumbnail shadow mb-2 rounded-circle"
-            width="150px"
-            height="150px"
+            style="width: 40px; height: 40px;"
           >
-        </router-link>
+          <div class="bg-success rounded-circle border border-2 border-white position-absolute end-0 bottom-0 p-1">
+          </div>
+        </div>
+        <div class="ms-3">
+          <h6 class="mb-0">{{ userdata.employee.name }}</h6>
+          <span class="text-muted small">{{ userdata.user.role }}</span>
+        </div>
       </div>
-      <div class="text-center mt-2">
-        <h6 class="fw-bold">{{ userdata.employee.name }}</h6>
-        <span class="badge bg-danger mx-auto">Administrator</span>
+      <div class="navbar-nav w-100">
+        <router-link
+          to="/"
+          class="nav-item nav-link"
+        ><i class="fa fa-tachometer-alt me-2"></i>Home</router-link>
+        <div class="nav-item dropdown">
+          <a
+            href="#"
+            class="nav-link dropdown-toggle"
+            data-bs-toggle="dropdown"
+          ><i class="fa fa-users me-2"></i>Employees</a>
+          <div class="dropdown-menu bg-transparent border-0">
+            <router-link
+              to="/employees"
+              class="dropdown-item"
+            >List</router-link>
+            <router-link
+              to="/employees/create"
+              class="dropdown-item"
+            >Create</router-link>
+          </div>
+        </div>
+        <div class="nav-item dropdown">
+          <a
+            href="#"
+            class="nav-link dropdown-toggle"
+            data-bs-toggle="dropdown"
+          ><i class="fa fa-network-wired me-2"></i>Positions</a>
+          <div class="dropdown-menu bg-transparent border-0">
+            <router-link
+              to="/positions"
+              class="dropdown-item"
+            >List</router-link>
+            <router-link
+              to="/positions/create"
+              class="dropdown-item"
+            >Create</router-link>
+          </div>
+        </div>
+        <a
+          href="widget.html"
+          class="nav-item nav-link"
+        ><i class="fa fa-th me-2"></i>Widgets</a>
+        <a
+          href="form.html"
+          class="nav-item nav-link"
+        ><i class="fa fa-keyboard me-2"></i>Forms</a>
+        <a
+          href="table.html"
+          class="nav-item nav-link"
+        ><i class="fa fa-table me-2"></i>Tables</a>
+        <a
+          href="chart.html"
+          class="nav-item nav-link"
+        ><i class="fa fa-chart-bar me-2"></i>Charts</a>
+        <div class="nav-item dropdown">
+          <a
+            href="#"
+            class="nav-link dropdown-toggle"
+            data-bs-toggle="dropdown"
+          ><i class="far fa-file-alt me-2"></i>Pages</a>
+          <div class="dropdown-menu bg-transparent border-0">
+            <a
+              href="signin.html"
+              class="dropdown-item"
+            >Sign In</a>
+            <a
+              href="signup.html"
+              class="dropdown-item"
+            >Sign Up</a>
+            <a
+              href="404.html"
+              class="dropdown-item"
+            >404 Error</a>
+            <a
+              href="blank.html"
+              class="dropdown-item active"
+            >Blank Page</a>
+          </div>
+        </div>
       </div>
-      <div class="flex-shrink-0 p-2 pb-0 bg-white">
-        <ul class="list-unstyled ps-0">
-          <li class="border-top my-3"></li>
-          <li class="mb-1">
-            <button class="btn btn-toggle align-items-center rounded collapsed">
-              Home
-            </button>
-          </li>
-          <li class="mb-1">
-            <button
-              class="btn btn-toggle align-items-center rounded collapsed"
-              data-bs-toggle="collapse"
-              data-bs-target="#home-collapse"
-              aria-expanded="true"
-            >
-              Home
-            </button>
-            <div
-              class="collapse show"
-              id="home-collapse"
-            >
-              <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                <li><a
-                    href="#"
-                    class="link-dark rounded"
-                  >Overview</a></li>
-                <li><a
-                    href="#"
-                    class="link-dark rounded"
-                  >Updates</a></li>
-                <li><a
-                    href="#"
-                    class="link-dark rounded"
-                  >Reports</a></li>
-              </ul>
-            </div>
-          </li>
-          <li class="mb-1">
-            <button
-              class="btn btn-toggle align-items-center rounded collapsed"
-              data-bs-toggle="collapse"
-              data-bs-target="#dashboard-collapse"
-              aria-expanded="false"
-            >
-              Employee
-            </button>
-            <div
-              class="collapse"
-              id="dashboard-collapse"
-            >
-              <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                <li><a
-                    href="#"
-                    class="link-dark rounded"
-                  >List</a></li>
-                <li><a
-                    href="#"
-                    class="link-dark rounded"
-                  >Create</a></li>
-              </ul>
-            </div>
-          </li>
-          <template v-if="userdata.user.role === 'ADMINISTRATOR'">
-            <li class="mb-1">
-              <button
-                class="btn btn-toggle align-items-center rounded collapsed"
-                data-bs-toggle="collapse"
-                data-bs-target="#orders-collapse"
-                aria-expanded="false"
-              >
-                Positions
-              </button>
-              <div
-                class="collapse"
-                id="orders-collapse"
-              >
-                <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                  <li>
-                    <router-link
-                      to="/positions"
-                      class="link-dark rounded"
-                    >List</router-link>
-                  </li>
-                  <li>
-                    <router-link
-                      to="/positions/create"
-                      class="link-dark rounded"
-                    >Create</router-link>
-                  </li>
-                </ul>
-              </div>
-            </li>
-          </template>
-          <li class="border-top my-3"></li>
-          <li>
-            <button
-              class="btn btn-toggle align-items-center rounded collapsed"
-              data-bs-toggle="collapse"
-              data-bs-target="#account-collapse"
-              aria-expanded="false"
-            >
-              Account
-            </button>
-            <div
-              class="collapse"
-              id="account-collapse"
-            >
-              <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                <li><a
-                    href="#"
-                    class="link-dark rounded"
-                  >New...</a></li>
-                <li><a
-                    href="#"
-                    class="link-dark rounded"
-                  >Profile</a></li>
-                <li><a
-                    href="#"
-                    class="link-dark rounded"
-                  >Settings</a></li>
-                <li><a
-                    href="#"
-                    class="link-dark rounded"
-                  >Sign out</a></li>
-              </ul>
-            </div>
-          </li>
-        </ul>
-      </div>
-    </div>
+    </nav>
   </div>
+  <!-- Sidebar End -->
 </template>
 
 <script>
@@ -158,6 +124,9 @@ export default {
       isLoggedIn: 'isLoggedIn',
       userdata: 'user'
     })
+  },
+  data: {
+    hide: false
   }
 
 }

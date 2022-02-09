@@ -1,78 +1,80 @@
 <template>
-  <div class="card border-0 shadow-sm">
-    <div class="card-body p-4">
-      <h5><i class="fa fa-key"></i> Change Password</h5>
-      <div class="row mb-3">
-        <div class="col-lg align-self-center">
-          <router-link to="/settings"><i class="fa fa-chevron-left"></i> Back</router-link>
-        </div>
-      </div>
-      <!-- form -->
-      <form
-        method="post"
-        ref="position_form"
-        @submit.prevent="submit"
-      >
-        <!-- Current Password -->
-        <div class="mb-3 row">
-          <label
-            for="current_password"
-            class="col-sm-3 col-form-label"
-          >Current Password <sup class="text-danger">*</sup></label>
-          <div class="col-sm-9">
-            <input
-              type="password"
-              name="current_password"
-              class="form-control"
-              id="current_password"
-              v-model="form_data.current_password"
-            >
+  <div class="container-fluid px-4 my-4">
+    <div class="card bg-light border-0 shadow-sm">
+      <div class="card-body p-4">
+        <h5><i class="fa fa-key"></i> Change Password</h5>
+        <div class="row mb-3">
+          <div class="col-lg align-self-center">
+            <router-link to="/settings"><i class="fa fa-chevron-left"></i> Back</router-link>
           </div>
         </div>
-        <!-- New Password -->
-        <div class="mb-3 row">
-          <label
-            for="new_password"
-            class="col-sm-3 col-form-label"
-          >New Password <sup class="text-danger">*</sup></label>
-          <div class="col-sm-9">
-            <input
-              type="password"
-              name="new_password"
-              class="form-control"
-              id="new_password"
-              v-model="form_data.new_password"
-            >
-          </div>
-        </div>
-        <!-- Confirm New Password -->
-        <div class="mb-3 row">
-          <label
-            for="confirm_new_password"
-            class="col-sm-3 col-form-label"
-          >Confirm New Password <sup class="text-danger">*</sup></label>
-          <div class="col-sm-9">
-            <input
-              type="password"
-              name="confirm_new_password"
-              class="form-control"
-              id="confirm_new_password"
-              v-model="form_data.confirm_new_password"
-            >
-          </div>
-        </div>
-        <!-- Submit -->
-        <div class="row">
-          <div class="offset-sm-3 col-sm-9">
-            <div class="d-grid">
-              <button
-                type="submit"
-                class="btn btn-outline-primary"
-              ><i class="fa fa-paper-plane"></i> Submit</button>
+        <!-- form -->
+        <form
+          method="post"
+          ref="position_form"
+          @submit.prevent="submit"
+        >
+          <!-- Current Password -->
+          <div class="mb-3 row">
+            <label
+              for="current_password"
+              class="col-sm-3 col-form-label"
+            >Current Password <sup class="text-danger">*</sup></label>
+            <div class="col-sm-9">
+              <input
+                type="password"
+                name="current_password"
+                class="form-control"
+                id="current_password"
+                v-model="form_data.current_password"
+              >
             </div>
           </div>
-        </div>
-      </form>
+          <!-- New Password -->
+          <div class="mb-3 row">
+            <label
+              for="new_password"
+              class="col-sm-3 col-form-label"
+            >New Password <sup class="text-danger">*</sup></label>
+            <div class="col-sm-9">
+              <input
+                type="password"
+                name="new_password"
+                class="form-control"
+                id="new_password"
+                v-model="form_data.new_password"
+              >
+            </div>
+          </div>
+          <!-- Confirm New Password -->
+          <div class="mb-3 row">
+            <label
+              for="confirm_new_password"
+              class="col-sm-3 col-form-label"
+            >Confirm New Password <sup class="text-danger">*</sup></label>
+            <div class="col-sm-9">
+              <input
+                type="password"
+                name="confirm_new_password"
+                class="form-control"
+                id="confirm_new_password"
+                v-model="form_data.confirm_new_password"
+              >
+            </div>
+          </div>
+          <!-- Submit -->
+          <div class="row">
+            <div class="offset-sm-3 col-sm-9">
+              <div class="d-grid">
+                <button
+                  type="submit"
+                  class="btn btn-outline-primary"
+                ><i class="fa fa-paper-plane"></i> Submit</button>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
     </div>
   </div>
 </template>
