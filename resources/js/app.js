@@ -55,7 +55,7 @@ if (process.env.MIX_APP_ENV === 'production') {
     Vue.config.silent = true; 
 }
 
-Vue.prototype.$base_url = 'http://dailyreport.test'
+Vue.prototype.$base_url = process.env.APP_URL
 Vue.prototype.moment = moment
 
 const token = localStorage.getItem('X-STMIK-TOKEN')
