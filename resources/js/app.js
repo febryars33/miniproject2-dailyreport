@@ -38,11 +38,7 @@ import App from './NewApp.vue'
 import router from './router'
 import store from './store'
 import moment from 'moment';
-// import SocketIO from 'socket.io-client';
-// import VueSocketIO from 'vue-socket.io';
 import { setHeaderToken } from './utils/auth';
-
-// export const SocketInstance = socketio.connect('http://localhost:3000')
 
 import 'bootstrap'
 // import 'bootstrap-icons/font/bootstrap-icons.css'
@@ -83,10 +79,6 @@ Vue.use(VueMeta)
 Vue.use(VueToast, {
   position: 'top-right'
 })
-// Vue.use(new VueSocketIO( {
-//   debug: true,
-//   connection: SocketIO('http://localhost:3000')
-// }))
 
 store.dispatch('get_user', token)
   .then(() => {
